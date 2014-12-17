@@ -1,0 +1,106 @@
+---------------------------------------------------------------------------
+LABEL:          AMQFFST1
+IDENTIFIER:     813FE820
+
+Date/Time:       Mon Dec 15 09:29:00 EST 2014
+Sequence Number: 7256
+Machine Id:      11F61C111C11
+Node Id:         AB123456-CDE
+Class:           S
+Type:            UNKN
+WPAR:            Global
+Resource Name:   MQSeries        
+
+Description
+SOFTWARE PROGRAM ERROR
+
+Probable Causes
+UNDETERMINED
+
+Failure Causes
+SOFTWARE PROGRAM
+
+	Recommended Actions
+	REVIEW DETAILED DATA
+	CONTACT APPROPRIATE SERVICE REPRESENTATIVE
+
+Detail Data
+DETECTING MODULE
+xcsWriteQmgrLogMessage
+SOFTWARE ERROR CODE
+0000 000A 
+FILE NAME
+/var/mqm/errors/AMQ4260474.0.FDC
+---------------------------------------------------------------------------
+LABEL:          LOST_EVENTS
+IDENTIFIER:     A12F3A45
+
+Date/Time:       Sun Dec 14 09:45:08 EST 2014
+Sequence Number: 7503
+Machine Id:      12F34C567C89
+Node Id:         NA123456-SAL
+Class:           S
+Type:            TEMP
+WPAR:            Global
+Resource Name:   syserrlg        
+
+Description
+ERROR LOGGING BUFFER OVERFLOW
+
+Probable Causes
+EXCESSIVE LOGGING BY SOFTWARE PROGRAM
+
+Install Causes
+BUFFER SIZE SET TOO SMALL
+
+	Recommended Actions
+	INCREASE BUFFER SIZE
+
+Failure Causes
+EXCESSIVE LOGGING BY SOFTWARE PROGRAM
+
+	Recommended Actions
+	IDENTIFY OFFENDING SOFTWARE COMPONENT
+	CORRECT THEN RETRY OFFENDING SOFTWARE COMPONENT
+
+Detail Data
+ERROR ID OF FIRST EVENT DISCARDED
+813FE820
+ERROR ID OF LAST EVENT DISCARDED
+813FE820
+NUMBER OF EVENTS DISCARDED
+32
+---------------------------------------------------------------------------
+LABEL:          RMCD_INFO_0_ST
+IDENTIFIER:     A1DF23AA
+
+Date/Time:       Sat Dec 13 03:27:55 EST 2014
+Sequence Number: 7261
+Machine Id:      12F34C567C89
+Node Id:         NA123456-SAL
+Class:           O
+Type:            INFO
+WPAR:            Global
+Resource Name:   RMCdaemon       
+
+Description
+The daemon is started.
+
+Probable Causes
+The Resource Monitoring and Control daemon has been started.
+
+User Causes
+The startsrc -s ctrmc command has been executed or
+the rmcctrl -s command has been executed.
+
+	Recommended Actions
+	Confirm that the daemon should be started.
+
+Detail Data
+DETECTING MODULE
+RSCT,rmcd.c,1.84,231                          
+ERROR ID 
+6eKora09WzWI/SSD/D4y5g0...................
+REFERENCE CODE
+                                          
+---------------------------------------------------------------------------

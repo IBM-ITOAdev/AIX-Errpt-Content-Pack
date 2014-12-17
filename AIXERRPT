@@ -1,0 +1,98 @@
+############################################################################
+#
+# Standard AIX Errpt logs
+#
+############################################################################
+# v1	 Doug McClure	12-15-14 : Initial patterns
+#
+#
+############################################################################
+#
+# tested against an errpt log with this format example
+#
+#---------------------------------------------------------------------------
+#LABEL:          AMQFFST1
+#IDENTIFIER:     813FE820
+#
+#Date/Time:       Mon Dec 15 09:29:00 EST 2014
+#Sequence Number: 7256
+#Machine Id:      11F61C111C11
+#Node Id:         AB123456-CDE
+#Class:           S
+#Type:            UNKN
+#WPAR:            Global
+#Resource Name:   MQSeries        
+#
+#Description
+#SOFTWARE PROGRAM ERROR
+#
+#Probable Causes
+#UNDETERMINED
+#
+#Failure Causes
+#SOFTWARE PROGRAM
+#
+#	Recommended Actions
+#	REVIEW DETAILED DATA
+#	CONTACT APPROPRIATE SERVICE REPRESENTATIVE
+#
+#Detail Data
+#DETECTING MODULE
+#xcsWriteQmgrLogMessage
+#SOFTWARE ERROR CODE
+#0000 000A 
+#FILE NAME
+#/var/mqm/errors/AMQ4260474.0.FDC
+#---------------------------------------------------------------------------
+#
+#####################################################################################
+
+# aixerrpt log message separator 
+SEPARATOR ^----+
+
+# aixerrpt log message pattern (assumes processing to remove separator and new lines \n
+
+#this generalizes the bottom portion of the aixerrpt log message - there are multiple unique message patterns in this section which may occur
+#examples: Probable Cause, Failure Cause, Install Cause, User Cause, Detail Data
+#Detail Data has varying field data which would be interesting as fields - these should have different patterns created  (see below)
+
+AIXERRPTBLK LABEL:\s+%{DATA:LABEL}IDENTIFIER:\s+%{DATA:IDENTIFIER}Date/Time:\s+%{DATA:origTIMESTAMP}Sequence Number:\s+%{DATA:SEQUENCENUMBER}Machine Id:\s+%{DATA:MACHINEID}Node Id:\s+%{DATA:NODEID}Class:\s+%{DATA:CLASS}Type:\s+%{DATA:TYPE}WPAR:\s+%{DATA:WPAR}Resource Name:\s+%{DATA:RESOURCENAME}\s+%{GREEDYDATA:DESCRIPTION}
+
+# aixerrpt common fields 
+
+LABEL LABEL:\s+%{DATA:LABEL}
+IDENTIFIER IDENTIFIER:\s+%{DATA:IDENTIFIER}
+TIMESTAMP Date/Time:\s+%{DATA:origTIMSTAMP}
+SEQUENCENUMBER Sequence Number:\s+%{DATA:SEQUENCENUMBER}
+MACHINEID Machine Id:\s+%{DATA:MACHINEID}
+NODEID Node Id:\s+%{DATA:NODEID}
+CLASS Class:\s+%{DATA:CLASS}
+TYPE Type:\s+%{DATA:TYPE}
+WPAR WPAR:\s+%{DATA:WPAR}
+RESOURCENAME Resource Name:\s+%{DATA:RESOURCENAME}
+DESCRIPTION Description\s+%{DATA:DESCRIPTION}
+PROBABLECAUSE Probable Causes\s+%{DATA:PROBABLECAUSE}
+FAILURECAUSES Failure Causes\s+%{DATA:FAILURECAUSES}
+RECOMMENDEDACTIONS \tRecommended Actions\s+%{DATA:RECOMMENDEDACTIONS}
+DETAILDATA Detail Data %{GREEDYDATA:DETAILDATA}
+
+#using these fields will require creation of new aggregate patterns and associated "glue" in between them (eg \s+ or similar regex)
+
+#other fields which may appear
+
+USERCAUSES User Causes\s+%{DATA:USERCAUSES}
+INSTALLCAUSES Install Causes\s+%{DATA:USERCAUSES}
+
+#the DetailData Section contains a lot of fields which may be interesting as parsed fields
+
+DM DETECTING MODULE\s+%{DATA:DETECTINGMODULE}
+SEC SOFTWARE ERROR CODE\s+%{DATA:SOFTWAREERRORCODE}
+FILENAME FILE NAME\s+%{DATA:FILENAME}
+EID ERROR ID\s+%{DATA:ERRORID}
+RC REFERENCE CODE\s+%{DATA:REFERENCECODE}
+SC SYMPTOM CODE\s+%{DATA:SYMPTOMCODE}
+EC ERROR CODE\s+%{DATA:ERRORCODE}
+FM FAILING MODULE\s+%{DATA:FAILINGMODULE}
+PGM PROGRAM\s+%{DATA:PROGRAM}
+USERPID USER'S PROCESS ID:\s+%{DATA:USERPROCESSID}
+PGSPACE PROGRAM'S PAGING SPACE USE IN 1KB BLOCKS\s+%{DATA:PAGINGSPACE}

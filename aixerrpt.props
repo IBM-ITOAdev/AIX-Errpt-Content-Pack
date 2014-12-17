@@ -1,0 +1,119 @@
+[SCALA_server]
+scalaHome: /path/to/your/scala/install
+
+[DSV_file]
+delimiter: ,
+totalColumns: 11
+aqlModuleName: aixerrpt
+version: 1.0.0.0
+
+[field0_indexConfig]
+name: logRecord
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+path_1: content.text
+combine: FIRST
+
+[field1_indexConfig]
+name: LABEL
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field2_indexConfig]
+name: IDENTIFIER
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field3_indexConfig]
+name: timestamp
+dataType: DATE
+dateFormat: EEE MMM dd HH:mm:ss z yyyy
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field4_indexConfig]
+name: SEQUENCENUMBER
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field5_indexConfig]
+name: MACHINEID
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field6_indexConfig]
+name: NODEID
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field7_indexConfig]
+name: CLASS
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field8_indexConfig]
+name: TYPE
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field9_indexConfig]
+name: WPAR
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field10_indexConfig]
+name: RESOURCENAME
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
+
+[field11_indexConfig]
+name: DESCRIPTION
+dataType: TEXT
+retrievable: true
+retrieveByDefault: true
+sortable: true
+filterable: true
+searchable: true
