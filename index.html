@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>AIX ERRPT Logs Content Pack by IBM-ITOAdev</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>AIX ERRPT Logs Content Pack</h1>
+        <h2>An example logstash+DSV conent pack for SCALA</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/IBM-ITOAdev/AIX-Errpt-Content-Pack/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/IBM-ITOAdev/AIX-Errpt-Content-Pack/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/IBM-ITOAdev/AIX-Errpt-Content-Pack" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="aix-errpt-log-content-pack-for-ibm-smart-cloud-analytics-log-analysis-scala" class="anchor" href="#aix-errpt-log-content-pack-for-ibm-smart-cloud-analytics-log-analysis-scala" aria-hidden="true"><span class="octicon octicon-link"></span></a>AIX Errpt Log Content Pack for IBM Smart Cloud Analytics Log Analysis (SCALA)</h1>
+
+<h1>
+<a id="whats-included" class="anchor" href="#whats-included" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's Included?</h1>
+
+<ol>
+<li>A sample logstash configuration <strong>(aixerrpt-example.conf)</strong>
+</li>
+<li>A logstash grok pattern for aixerrpt log messages <strong>(AIXERRPT)</strong>
+</li>
+<li>A SCALA DSV Pack properties file <strong>(aixerrpt.props)</strong>
+</li>
+<li>A sample AIX Errpt logfile <strong>(aixerrpt-sample.log)</strong>
+</li>
+</ol>
+
+<h1>
+<a id="deploying-the-content-pack" class="anchor" href="#deploying-the-content-pack" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deploying the Content Pack</h1>
+
+<ol>
+<li><p>Review the sample logstash configuration <strong>(aixerrpt-example.conf)</strong> and determine how you will use the inputs, filters and outputs.  You can use this example or just copy the needed parts into your main logstash configuration file.</p></li>
+<li><p>Determine how you will bring your logs in (eg LFA, file import, etc.) and update the input section appropriately.</p></li>
+<li><p>Review the filters section and determine if any changes are needed based upon how you use logstash, which version you use, etc.</p></li>
+<li><p>Review the output section and update based on your current logstash integration with SCALA. This example configuration will only work with the upcoming release of the SCALA-Logstash Integration.  If you do not have this, contact Doug McClure for assistance.</p></li>
+<li><p>Place the logstash GROK pattern file <strong>(AIXERRPT)</strong> into the appropriate location.  If you are using logstash 1.4.2, you may place this into the /patterns directory and you'll be all set. If you are using logstash 1.5 beta, you can place it into the same /patterns directory, but you will need to use the patterns_dir setting to this location in each filter using the GROK patterns (eg multiline, grok).</p></li>
+<li><p>Copy the DSV Pack properties file <strong>(aixerrpt.props)</strong> into the $SCALAHOME/unity_content/DSVToolkit_v1.1.0.2 directory.</p></li>
+<li><p>Edit the aixerrpt.props file and update the scalaHome directory path.  You may also want to optimize the various index configuration fields in this file. For example, setting filterable = false for the SEQUENCENUMBER field if you don't feel faceting on SEQUENCENUMBER would be useful.</p></li>
+<li><p>Execute this command to build and deploy the DSV Content Pack into SCALA: <strong>python dsvGen.py aixerrpt.props -d -f -u unityadmin -p unityadmin</strong></p></li>
+<li><p>Create a SCALA datasource which uses the new DSV Content Pack named <strong>aixerrpt</strong>. Be sure to set the host and path values to match what you're setting in your logstash configuration. By default, they are <strong>host = aixerrpt and path = aixerrpt</strong>.</p></li>
+<li><p>Start up logstash and stream your AIX Errpt logs into SCALA and verify you see data in your search results.</p></li>
+</ol>
+
+<h1>
+<a id="need-help" class="anchor" href="#need-help" aria-hidden="true"><span class="octicon octicon-link"></span></a>Need Help?</h1>
+
+<p>This is a community contributed content pack and no explicit support, guarantee or warranties are provided by IBM nor the contributor. Feel free to engage the community on the ITOAdev forum if you need help!</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
