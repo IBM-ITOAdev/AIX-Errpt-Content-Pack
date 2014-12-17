@@ -2,10 +2,10 @@
 
 # What's Included?
 
-1 - A sample logstash configuration **(aixerrpt-example.conf)**
-2 - A logstash grok pattern for aixerrpt log messages **(AIXERRPT)**
-3 - A SCALA DSV Pack properties file **(aixerrpt.props)**
-4 - A sample AIX Errpt logfile **(aixerrpt-sample.log)**
+1. A sample logstash configuration **(aixerrpt-example.conf)**
+2. A logstash grok pattern for aixerrpt log messages **(AIXERRPT)**
+3. A SCALA DSV Pack properties file **(aixerrpt.props)**
+4. A sample AIX Errpt logfile **(aixerrpt-sample.log)**
 
 # Deploying the Content Pack
 
